@@ -44,12 +44,10 @@ function Invoke-GitSparseCheckout {
         $v = git --version
         [regex]$rx = "(\d+\.){1,}\d+"
         $currentVersion = $rx.match($v).Value
-        if($currentVersion -lt '2.19') {
+        if ($currentVersion -lt '2.19') {
             Write-Warning 'Your version of Git might not support filtering! Consider upgrading it!'
             return
         }
-
-
     }
 
     process {

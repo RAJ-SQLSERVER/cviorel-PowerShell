@@ -1,33 +1,36 @@
 #Requires -RunAsAdministrator
 
-winget install -e --id=Microsoft.PowerShell
+$packages = @(
+    "Microsoft.PowerShell",
+    "Mozilla.Firefox",
+    "Google.Chrome",
+    "JanDeDobbeleer.OhMyPosh",
+    "Bitwarden.Bitwarden",
+    "OBSProject.OBSStudio",
+    "VideoLAN.VLC",
+    "Zoom.Zoom",
+    "SlackTechnologies.Slack",
+    #"Microsoft.Teams",
+    "StandardNotes.StandardNotes",
+    "Git.Git",
+    "Python.Python.3.12",
+    "Notepad++.Notepad++",
+    "Microsoft.VisualStudioCode",
+    "Microsoft.AzureDataStudio"
+    #"Adobe.Acrobat.Reader.64-bit",
+    #"Microsoft.WindowsTerminal",
+    #"AutoHotkey.AutoHotkey",
+    #"7zip.7zip",
+    #"XnSoft.XnViewMP",
+    #"Microsoft.SQLServerManagementStudio"
+)
 
-winget install -e --id=Mozilla.Firefox
-winget install -e --id=Google.Chrome
-winget install -e --id=JanDeDobbeleer.OhMyPosh
-
-winget install -e --id=Bitwarden.Bitwarden
-
-winget install -e --id=OBSProject.OBSStudio
-winget install -e --id=VideoLAN.VLC
-
-winget install -e --id=Zoom.Zoom
-winget install -e --id=SlackTechnologies.Slack
-#winget install -e --id=Microsoft.Teams
-
-winget install -e --id=StandardNotes.StandardNotes
-
-winget install -e --id=Git.Git
-winget install -e --id=Python.Python.3.12
-winget install -e --id=Notepad++.Notepad++
-winget install -e --id=Microsoft.VisualStudioCode
-winget install -e --id=Microsoft.AzureDataStudio
-
-#winget install -e --id=Adobe.Acrobat.Reader.64-bit
-
-
-#winget install -e --id=Microsoft.WindowsTerminal
-#winget install -e --id=AutoHotkey.AutoHotkey
-#winget install -e --id=7zip.7zip
-#winget install -e --id=XnSoft.XnViewMP
-#winget install -e --id=Microsoft.SQLServerManagementStudio
+foreach ($package in $packages) {
+    try {
+        winget install -e --id=$package
+    }
+    catch {
+        Write-Host "Failed to install package: $package"
+        Write-Host $_.Exception.Message
+    }
+}
