@@ -1,36 +1,43 @@
-#Requires -RunAsAdministrator
+# Requires -RunAsAdministrator
 
+# Define the list of packages to install
 $packages = @(
-    "Microsoft.PowerShell",
-    "Mozilla.Firefox",
+    "Bitwarden.Bitwarden",
+    "Git.Git",
     "Google.Chrome",
     "JanDeDobbeleer.OhMyPosh",
-    "Bitwarden.Bitwarden",
-    "OBSProject.OBSStudio",
-    "VideoLAN.VLC",
-    "Zoom.Zoom",
-    "SlackTechnologies.Slack",
-    #"Microsoft.Teams",
-    "StandardNotes.StandardNotes",
-    "Git.Git",
-    "Python.Python.3.12",
-    "Notepad++.Notepad++",
+    "Microsoft.AzureDataStudio",
+    "Microsoft.PowerShell",
     "Microsoft.VisualStudioCode",
-    "Microsoft.AzureDataStudio"
-    #"Adobe.Acrobat.Reader.64-bit",
-    #"Microsoft.WindowsTerminal",
-    #"AutoHotkey.AutoHotkey",
-    #"7zip.7zip",
-    #"XnSoft.XnViewMP",
-    #"Microsoft.SQLServerManagementStudio"
+    "Mozilla.Firefox",
+    "Notepad++.Notepad++",
+    "OBSProject.OBSStudio",
+    "Python.Python.3.12",
+    "StandardNotes.StandardNotes",
+    "VideoLAN.VLC",
+    "Adobe.Acrobat.Reader.64-bit"
+    # Uncomment the lines below to include additional packages
+    # "7zip.7zip",
+    # "AutoHotkey.AutoHotkey",
+    # "Microsoft.SQLServerManagementStudio",
+    # "Microsoft.Teams",
+    # "Microsoft.WindowsTerminal",
+    # "SlackTechnologies.Slack",
+    # "XnSoft.XnViewMP",
+    # "Zoom.Zoom"
 )
 
+# Iterate over each package in the list
 foreach ($package in $packages) {
     try {
-        winget install -e --id=$package
+        # Attempt to install the package using winget
+        Write-Host "Installing package: $package"
+        winget install -e --id=$package -h
+        Write-Host "Successfully installed package: $package"
     }
     catch {
-        Write-Host "Failed to install package: $package"
-        Write-Host $_.Exception.Message
+        # If installation fails, output the error message
+        Write-Host "Failed to install package: $package" -ForegroundColor Red
+        Write-Host "Error: $($_.Exception.Message)" -ForegroundColor Yellow
     }
 }

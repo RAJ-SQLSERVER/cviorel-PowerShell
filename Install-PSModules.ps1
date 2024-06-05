@@ -7,7 +7,6 @@ $modules = @(
     'HtmlReport',
     'PSScriptAnalyzer',
     'posh-git',
-    'oh-my-posh',
     'PSWindowsUpdate',
     'ImportExcel',
     'DockerCompletion'
