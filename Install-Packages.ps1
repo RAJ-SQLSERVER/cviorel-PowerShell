@@ -15,7 +15,8 @@ $packages = @(
     "Python.Python.3.12",
     "StandardNotes.StandardNotes",
     "VideoLAN.VLC",
-    "Adobe.Acrobat.Reader.64-bit"
+    "Adobe.Acrobat.Reader.64-bit",
+    "dotPDN.PaintDotNet"
     # Uncomment the lines below to include additional packages
     # "7zip.7zip",
     # "AutoHotkey.AutoHotkey",
