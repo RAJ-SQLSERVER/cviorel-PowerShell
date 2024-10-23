@@ -243,3 +243,7 @@
         Write-Error "An error occurred: $_"
     }
 }
+
+$Credential = Get-Credential admin
+
+
